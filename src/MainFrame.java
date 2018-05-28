@@ -12,7 +12,7 @@ class MainFrame extends JFrame implements Runnable{
     private ImageIcon icon = new ImageIcon("Action/default-r.png");
     private Timer[] timer = new Timer[10];
     private int objx = 0, objy = 720 - 185, objw = 106, objh = 115, v = 90, t = 1;
-    private boolean jumpping = false, direction_Right = true;
+    private boolean jumpping = false, direction_Right = true , shooting=false;
     MainFrame() {
         game();
         timer[0].start();
@@ -43,7 +43,6 @@ class MainFrame extends JFrame implements Runnable{
                     charcter.setIcon(icon);
                     objx += 5;
                     charcter.setLocation(objx, objy);
-                    timer[4].start();
                     direction_Right = true;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -55,7 +54,6 @@ class MainFrame extends JFrame implements Runnable{
                     charcter.setIcon(icon);
                     objx -= 5;
                     charcter.setLocation(objx, objy);
-                    timer[4].start();
                     direction_Right = false;
                 }
                 if (e.getKeyCode() == KeyEvent.VK_X && !jumpping) {
@@ -76,6 +74,7 @@ class MainFrame extends JFrame implements Runnable{
                     if (jumpping) {
                         if (direction_Right) {
                             icon = new ImageIcon("Action/jumpshoot-r.png");
+
                         } else {
                             icon = new ImageIcon("Action/jumpshoot-l.png");
                         }
@@ -86,11 +85,12 @@ class MainFrame extends JFrame implements Runnable{
                             icon = new ImageIcon("Action/shoot-l.png");
                         }
                     }
+                    shooting=true;
+                    objw = icon.getIconWidth()+10;
+                    objh = icon.getIconHeight();
                     timer[0].stop();
                     timer[1].stop();
                     timer[4].start();
-                    objw = icon.getIconWidth()+10;
-                    objh = icon.getIconHeight();
                     charcter.setIcon(icon);
                 }
             }
@@ -152,12 +152,28 @@ class MainFrame extends JFrame implements Runnable{
             }
         });
         /////////////////////////shoot/////////////////////////////
-        timer[4] = new Timer(500, new ActionListener() {
+        timer[4] = new Timer(400, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!jumpping) {
-                    timer[0].start();
+                if (jumpping) {
+                    if(direction_Right){
+                        charcter.setIcon(new ImageIcon("Action/jump-r.png"));
+                    }
+                    else{
+                        charcter.setIcon(new ImageIcon("Action/jump-l.png"));
+                    }
                 }
+                else {
+                    if(direction_Right) {
+                        charcter.setIcon(new ImageIcon("Action/default-r.png"));
+                    }
+                    else {
+                        charcter.setIcon(new ImageIcon("Action/default-l.png"));
+                    }
+                }
+                charcter.setLocation(objx,objy);
+                timer[0].start();
+                timer[4].stop();
             }
         });
     }
