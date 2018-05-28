@@ -89,7 +89,7 @@ class MainFrame extends JFrame implements Runnable{
                     timer[0].stop();
                     timer[1].stop();
                     timer[4].start();
-                    objw = icon.getIconWidth();
+                    objw = icon.getIconWidth()+10;
                     objh = icon.getIconHeight();
                     charcter.setIcon(icon);
                 }
@@ -109,7 +109,7 @@ class MainFrame extends JFrame implements Runnable{
                         icon = new ImageIcon("Action/closeeye-l.png");
                     }
                     charcter.setIcon(icon);
-                    timer[1].restart();
+                    timer[1].start();
                 }
             }
         });
@@ -141,8 +141,7 @@ class MainFrame extends JFrame implements Runnable{
                     }
                     charcter.setIcon(icon);
                     timer[3].stop();
-                    timer[1].restart();
-                    timer[0].restart();
+                    timer[0].start();
                     jumpping = false;
                     v = 90;
                 } else if (v > 0) {
@@ -157,8 +156,7 @@ class MainFrame extends JFrame implements Runnable{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!jumpping) {
-                    timer[0].restart();
-                    timer[1].start();
+                    timer[0].start();
                 }
             }
         });
