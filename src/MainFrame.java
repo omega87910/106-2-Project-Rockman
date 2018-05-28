@@ -5,20 +5,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.lang.Runnable;
-
 class MainFrame extends JFrame implements Runnable{
     private JLabel charcter = new JLabel();
+    private JLabel background = new JLabel();
     private JLabel[] been = new JLabel[3];
     private ImageIcon icon = new ImageIcon("Action/default-r.png");
     private Timer[] timer = new Timer[10];
     private int objx = 0, objy = 720 - 185, objw = 106, objh = 115, v = 90, t = 1;
     private boolean jumpping = false, direction_Right = true;
-
     MainFrame() {
         game();
         timer[0].start();
     }
-
     private void game() {
         this.setBounds(300, 100, 1280, 720);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -26,11 +24,14 @@ class MainFrame extends JFrame implements Runnable{
         charcter.setIcon(icon);
         charcter.setBounds(objx, objy, objw, objh);
         this.add(charcter);
+        this.add(background);
+        background.setIcon(new ImageIcon("./background.png"));
+        background.setBounds(0,0,getWidth(),getHeight());
+        //////////////////////////key/////////////////////////////////////
         this.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
             }
-
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -93,7 +94,6 @@ class MainFrame extends JFrame implements Runnable{
                     charcter.setIcon(icon);
                 }
             }
-
             @Override
             public void keyReleased(KeyEvent e) {
             }
