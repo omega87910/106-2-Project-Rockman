@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 class MainFrame extends JFrame {
     Rockman rockman = new Rockman();
     private JLabel background = new JLabel();
@@ -51,37 +52,27 @@ class MainFrame extends JFrame {
                         rockman.setIcon(new ImageIcon("Action/jump-l.png"));
                     }
                 }
-//                if (e.getKeyCode() == KeyEvent.VK_C) {
-//                    if (jumpping) {
-//                        if (direction_Right) {
-//                            icon = new ImageIcon("Action/jumpshoot-r.png");
-//
-//                        } else {
-//                            icon = new ImageIcon("Action/jumpshoot-l.png");
-//                        }
-//                    } else {
-//                        if (direction_Right) {
-//                            icon = new ImageIcon("Action/shoot-r.png");
-//                        } else {
-//                            icon = new ImageIcon("Action/shoot-l.png");
-//                        }
-//                    }
-//                    shooting=true;
-//                    objw = icon.getIconWidth()+10;
-//                    objh = icon.getIconHeight();
-//                    timer[0].stop();
-//                    timer[1].stop();
-//                    timer[4].start();
-//                    rockman.setIcon(icon);
-//                }
+                if (e.getKeyCode() == KeyEvent.VK_C) {
+                    if (!rockman.getJumpping() && !rockman.getRunning() && !rockman.getDirection_Right() && !rockman.getShooting()) {
+                        rockman.setObjx(rockman.getObjx() - 50);
+                    }
+                    if(rockman.getJumpping() && !rockman.getDirection_Right()){
+                        rockman.setObjx(rockman.getObjx() - 14);
+                    }
+                    rockman.setShooting(true);
+                }
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_X) {
+                if (e.getKeyCode() == KeyEvent.VK_C) {
+                    rockman.setShooting(false);
+                    if (!rockman.getJumpping() && !rockman.getRunning() && !rockman.getDirection_Right() && !rockman.getShooting()) {
+                        rockman.setObjx(rockman.getObjx() + 50);
+                    }
                 }
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    rockman.run_stop();
+                        rockman.run_stop();
                 }
             }
         });
@@ -117,26 +108,5 @@ class MainFrame extends JFrame {
 //        }
 //        });
         /////////////////////////shoot/////////////////////////////
-//        timer[4] = new Timer(400, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                if (jumpping) {
-//                    if (direction_Right) {
-//                        rockman.setIcon(new ImageIcon("Action/jump-r.png"));
-//                    } else {
-//                        rockman.setIcon(new ImageIcon("Action/jump-l.png"));
-//                    }
-//                } else {
-//                    if (direction_Right) {
-//                        rockman.setIcon(new ImageIcon("Action/default-r.png"));
-//                    } else {
-//                        rockman.setIcon(new ImageIcon("Action/default-l.png"));
-//                    }
-//                }
-//                rockman.setLocation(objx, objy);
-////                timer[0].start();
-////                timer[4].stop();
-//            }
-//        });
     }
 }

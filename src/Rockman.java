@@ -1,19 +1,18 @@
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
 
 public class Rockman extends JLabel implements Runnable {
-    protected int objx = 0, objy = 720 - 205, v = 65, t = 1, runstep = -6;
-    protected boolean running, jumpping, direction_Right;
-    private Timer[] timer = new Timer[2];
+    private int objx = 0, objy = 720 - 205, v = 65, t = 1, runstep = -6;
+    private boolean running, jumpping, shooting = false, direction_Right;
 
-    public Rockman() {
+    Rockman() {
     }
 
     public void setObjx(int objx1) {
         this.objx = objx1;
+    }
+
+    public int getObjx() {
+        return objx;
     }
 
     public void setDirection_Right(boolean direction_Right1) {
@@ -32,6 +31,14 @@ public class Rockman extends JLabel implements Runnable {
         return jumpping;
     }
 
+    public void setShooting(boolean shooting1) {
+        this.shooting = shooting1;
+    }
+
+    public boolean getShooting() {
+        return shooting;
+    }
+
     public void setObjy(int objy1) {
         this.objy = objy1;
     }
@@ -44,30 +51,63 @@ public class Rockman extends JLabel implements Runnable {
         running = true;
     }
 
+    public boolean getRunning() {
+        return running;
+    }
+
     @Override
     public void run() {
         while (true) {
+            ///////////////////////////////////move///////////////////////////////////////////////
             if (running) {
                 if (direction_Right) {
                     System.out.println("right");
                     if (runstep >= 0) {
-                        objx += 10;
+                        objx += 12;
                         if (!jumpping) {
-                            switch (runstep % 40) {
-                                case 0:
-                                    Rockman.this.setIcon(new ImageIcon("Action/walk" + 1 + "-r.png"));
-                                    Rockman.this.setBounds(objx, objy + 21, this.getIcon().getIconWidth(), this.getIcon().getIconHeight());
-                                    break;
-                                case 10:
-                                    Rockman.this.setIcon(new ImageIcon("Action/walk" + 2 + "-r.png"));
-                                    break;
-                                case 20:
-                                    Rockman.this.setIcon(new ImageIcon("Action/walk" + 3 + "-r.png"));
-                                    Rockman.this.setBounds(objx, objy + 21, this.getIcon().getIconWidth(), this.getIcon().getIconHeight());
-                                    break;
-                                case 30:
-                                    Rockman.this.setIcon(new ImageIcon("Action/walk" + 2 + "-r.png"));
-                                    break;
+                            if (!shooting) {
+                                switch (runstep % 40) {
+                                    case 0:
+                                        Rockman.this.setIcon(new ImageIcon("Action/walk" + 1 + "-r.png"));
+                                        Rockman.this.setBounds(objx, objy + 21, this.getIcon().getIconWidth(), this.getIcon().getIconHeight());
+                                        break;
+                                    case 10:
+                                        Rockman.this.setIcon(new ImageIcon("Action/walk" + 2 + "-r.png"));
+                                        break;
+                                    case 20:
+                                        Rockman.this.setIcon(new ImageIcon("Action/walk" + 3 + "-r.png"));
+                                        Rockman.this.setBounds(objx, objy + 21, this.getIcon().getIconWidth(), this.getIcon().getIconHeight());
+                                        break;
+                                    case 30:
+                                        Rockman.this.setIcon(new ImageIcon("Action/walk" + 2 + "-r.png"));
+                                        break;
+                                }
+                            } else {
+                                switch (runstep % 40) {
+                                    case 0:
+                                        Rockman.this.setIcon(new ImageIcon("Action/walkshoot" + 1 + "-r.png"));
+                                        Rockman.this.setBounds(objx, objy + 21, this.getIcon().getIconWidth(), this.getIcon().getIconHeight());
+                                        break;
+                                    case 10:
+                                        Rockman.this.setIcon(new ImageIcon("Action/walkshoot" + 2 + "-r.png"));
+                                        break;
+                                    case 20:
+                                        Rockman.this.setIcon(new ImageIcon("Action/walkshoot" + 3 + "-r.png"));
+                                        Rockman.this.setBounds(objx, objy + 21, this.getIcon().getIconWidth(), this.getIcon().getIconHeight());
+                                        break;
+                                    case 30:
+                                        Rockman.this.setIcon(new ImageIcon("Action/walkshoot" + 2 + "-r.png"));
+                                        break;
+                                }
+                            }
+                        } else {
+                            if (shooting) {
+                                System.out.println("shoot");
+                                if (direction_Right) {
+                                    Rockman.this.setIcon(new ImageIcon("Action/jumpshoot-r.png"));
+                                } else {
+                                    Rockman.this.setIcon(new ImageIcon("Action/jumpshoot-l.png"));
+                                }
                             }
                         }
                     } else {
@@ -79,8 +119,9 @@ public class Rockman extends JLabel implements Runnable {
                 } else {
                     System.out.println("left");
                     if (runstep >= 0) {
-                        objx -= 10;
+                        objx -= 12;
                         if (!jumpping) {
+//                            if(!shooting) {
                             switch (runstep % 40) {
                                 case 0:
                                     Rockman.this.setIcon(new ImageIcon("Action/walk" + 1 + "-l.png"));
@@ -97,6 +138,34 @@ public class Rockman extends JLabel implements Runnable {
                                     Rockman.this.setIcon(new ImageIcon("Action/walk" + 2 + "-l.png"));
                                     break;
                             }
+//                            }
+//                            else{
+//                                switch (runstep % 40) {
+//                                    case 0:
+//                                        Rockman.this.setIcon(new ImageIcon("Action/walkshoot" + 1 + "-l.png"));
+//                                        Rockman.this.setBounds(objx, objy + 21, this.getIcon().getIconWidth(), this.getIcon().getIconHeight());
+//                                        break;
+//                                    case 10:
+//                                        Rockman.this.setIcon(new ImageIcon("Action/walkshoot" + 2 + "-l.png"));
+//                                        break;
+//                                    case 20:
+//                                        Rockman.this.setIcon(new ImageIcon("Action/walkshoot" + 3 + "-l.png"));
+//                                        Rockman.this.setBounds(objx, objy + 21, this.getIcon().getIconWidth(), this.getIcon().getIconHeight());
+//                                        break;
+//                                    case 30:
+//                                        Rockman.this.setIcon(new ImageIcon("Action/walkshoot" + 2 + "-l.png"));
+//                                        break;
+//                                }
+//                            }
+                        } else {//跳躍
+                            if (shooting) {
+                                System.out.println("shoot");
+                                if (direction_Right) {
+                                    Rockman.this.setIcon(new ImageIcon("Action/jumpshoot-r.png"));
+                                } else {
+                                    Rockman.this.setIcon(new ImageIcon("Action/jumpshoot-l.png"));
+                                }
+                            }
                         }
                     } else {
                         objx -= 1;
@@ -111,21 +180,41 @@ public class Rockman extends JLabel implements Runnable {
                     Rockman.this.setBounds(objx, objy + 12, this.getIcon().getIconWidth(), this.getIcon().getIconHeight());
                 }
                 runstep += 2;
-            } else {
-                runstep=0;
+            }
+            /////////////////////////////stop////////////////////////////////////////////////
+            else {
+                runstep = 0;
                 if (!jumpping) {
-                    if (direction_Right) {
-                        Rockman.this.setIcon(new ImageIcon("Action/default-r.png"));
-                    } else {
-                        Rockman.this.setIcon(new ImageIcon("Action/default-l.png"));
+                    if (!shooting) {
+                        if (direction_Right) {
+                            Rockman.this.setIcon(new ImageIcon("Action/default-r.png"));
+                        } else {
+                            Rockman.this.setIcon(new ImageIcon("Action/default-l.png"));
+                        }
+                    } else {//沒有跳躍而且射擊
+                        if (direction_Right) {
+                            Rockman.this.setIcon(new ImageIcon("Action/shoot-r.png"));
+                        } else {
+                            Rockman.this.setIcon(new ImageIcon("Action/shoot-l.png"));
+                        }
                     }
-                    Rockman.this.setBounds(objx, objy + 12, this.getIcon().getIconWidth(), this.getIcon().getIconHeight());
-                    runstep = -6;
+                } else {//跳躍並射擊
+                    if (shooting) {
+                        System.out.println("shoot");
+                        if (direction_Right) {
+                            Rockman.this.setIcon(new ImageIcon("Action/jumpshoot-r.png"));
+                        } else {
+                            Rockman.this.setIcon(new ImageIcon("Action/jumpshoot-l.png"));
+                        }
+                    }
                 }
+                Rockman.this.setBounds(objx, objy + 12, this.getIcon().getIconWidth(), this.getIcon().getIconHeight());
+                runstep = -6;
                 System.out.println("stop");
             }
+            //////////////////////////////////////jump/////////////////////////////////////////////
             if (jumpping) {
-                runstep=0;
+                runstep = 0;
                 System.out.println("jump");
                 v = v - 5 * t;
                 if (v <= 0 && v > -65) {
@@ -143,6 +232,7 @@ public class Rockman extends JLabel implements Runnable {
                 }
                 Rockman.this.setBounds(objx, objy + 12, Rockman.this.getIcon().getIconWidth(), Rockman.this.getIcon().getIconHeight());
             }
+            /////////////////////////////////////////////////////////////////////////////////////////////////
             try {
                 Thread.sleep(30);
             } catch (InterruptedException e) {
