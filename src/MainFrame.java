@@ -1,3 +1,4 @@
+import javafx.scene.media.AudioClip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -5,13 +6,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 class MainFrame extends JFrame {
+    AudioClip shootsound =new AudioClip(getClass().getResource("sfx3.wav").toString());
+    AudioClip bgm =new AudioClip(getClass().getResource("NinjaGaiden.mp3").toString());
     Rockman rockman = new Rockman();
     Timer timer[] =new Timer[2] ;
     private JPanel jpn =new JPanel();
     private JLabel background1 = new JLabel();
     private JLabel background2 = new JLabel();
     private JLabel background3 = new JLabel();
-    Been[] been = new Been[3];
+    Bean[] bean = new Bean[3];
     private int lb1X = 0 , lb2X = 884 , lb3X = 1262;
     private ImageIcon icon = new ImageIcon("Action/default-r.png");
     private Container cp;
@@ -20,11 +23,12 @@ class MainFrame extends JFrame {
         game();
         thread.start();
         timer[0].start();
+        bgm.play();
     }
     private void game() {
-        been[0]=new Been();
-        been[1]=new Been();
-        been[2]=new Been();
+        bean[0]=new Bean();
+        bean[1]=new Bean();
+        bean[2]=new Bean();
         this.setBounds(300, 100, 1280 - 10, 720);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -37,13 +41,13 @@ class MainFrame extends JFrame {
         background2.setIcon(new ImageIcon("./bg2.png"));
         background3.setBounds(1258, 0, 884, 685);
         background3.setIcon(new ImageIcon("./bg1.png"));
-        been[0].setIcon(new ImageIcon("Action/been.png"));
-        been[1].setIcon(new ImageIcon("Action/been.png"));
-        been[2].setIcon(new ImageIcon("Action/been.png"));
+        bean[0].setIcon(new ImageIcon("Action/bean.png"));
+        bean[1].setIcon(new ImageIcon("Action/bean.png"));
+        bean[2].setIcon(new ImageIcon("Action/bean.png"));
         jpn.add(rockman);
-        jpn.add(been[0]);
-        jpn.add(been[1]);
-        jpn.add(been[2]);
+        jpn.add(bean[0]);
+        jpn.add(bean[1]);
+        jpn.add(bean[2]);
         jpn.add(background1);
         jpn.add(background2);
         jpn.add(background3);
@@ -82,42 +86,44 @@ class MainFrame extends JFrame {
                     if (!rockman.getJumpping() && !rockman.getRunning() && !rockman.getDirection_Right() && !rockman.getShooting()) {
                         rockman.setObjx(rockman.getObjx() - 50);
                     }
+
                     if(rockman.getJumpping() && !rockman.getDirection_Right()){
                         rockman.setObjx(rockman.getObjx() - 14);
                     }
                     if(!rockman.getShooting()) {
-                        if(been[0].getShoot_allow()) {
+                        if(bean[0].getShoot_allow()) {
                             if (rockman.getDirection_Right()) {
-                                been[0].setObjx(rockman.getObjx() + rockman.getIcon().getIconWidth());
+                                bean[0].setObjx(rockman.getObjx() + rockman.getIcon().getIconWidth());
                             } else {
-                                been[0].setObjx(rockman.getObjx());
+                                bean[0].setObjx(rockman.getObjx());
                             }
-                            been[0].setObjy(rockman.getObjy() + 50);
-                            been[0].setBounds(been[0].getObjx(), been[0].getObjy(), been[0].getIcon().getIconWidth(), been[0].getIcon().getIconHeight());
-                            been[0].setDirection_Right(rockman.getDirection_Right());
-                            been[0].setShoot_allow(false);
-                        }else if(been[1].getShoot_allow()) {
+                            bean[0].setObjy(rockman.getObjy() + 50);
+                            bean[0].setBounds(bean[0].getObjx(), bean[0].getObjy(), bean[0].getIcon().getIconWidth(), bean[0].getIcon().getIconHeight());
+                            bean[0].setDirection_Right(rockman.getDirection_Right());
+                            bean[0].setShoot_allow(false);
+                            shootsound.play();
+                        }else if(bean[1].getShoot_allow()) {
                             if (rockman.getDirection_Right()) {
-                                been[1].setObjx(rockman.getObjx() + rockman.getIcon().getIconWidth());
+                                bean[1].setObjx(rockman.getObjx() + rockman.getIcon().getIconWidth());
                             } else {
-                                been[1].setObjx(rockman.getObjx());
+                                bean[1].setObjx(rockman.getObjx());
                             }
-                            been[1].setObjy(rockman.getObjy() + 50);
-                            been[1].setBounds(been[1].getObjx(), been[1].getObjy(), been[1].getIcon().getIconWidth(), been[1].getIcon().getIconHeight());
-                            been[1].setDirection_Right(rockman.getDirection_Right());
-                            been[1].setShoot_allow(false);
-
-                        }else if(been[2].getShoot_allow()) {
+                            bean[1].setObjy(rockman.getObjy() + 50);
+                            bean[1].setBounds(bean[1].getObjx(), bean[1].getObjy(), bean[1].getIcon().getIconWidth(), bean[1].getIcon().getIconHeight());
+                            bean[1].setDirection_Right(rockman.getDirection_Right());
+                            bean[1].setShoot_allow(false);
+                            shootsound.play();
+                        }else if(bean[2].getShoot_allow()) {
                             if (rockman.getDirection_Right()) {
-                                been[2].setObjx(rockman.getObjx() + rockman.getIcon().getIconWidth());
+                                bean[2].setObjx(rockman.getObjx() + rockman.getIcon().getIconWidth());
                             } else {
-                                been[2].setObjx(rockman.getObjx());
+                                bean[2].setObjx(rockman.getObjx());
                             }
-                            been[2].setObjy(rockman.getObjy() + 50);
-                            been[2].setBounds(been[2].getObjx(), been[2].getObjy(), been[2].getIcon().getIconWidth(), been[2].getIcon().getIconHeight());
-                            been[2].setDirection_Right(rockman.getDirection_Right());
-                            been[2].setShoot_allow(false);
-
+                            bean[2].setObjy(rockman.getObjy() + 50);
+                            bean[2].setBounds(bean[2].getObjx(), bean[2].getObjy(), bean[2].getIcon().getIconWidth(), bean[2].getIcon().getIconHeight());
+                            bean[2].setDirection_Right(rockman.getDirection_Right());
+                            bean[2].setShoot_allow(false);
+                            shootsound.play();
                         }
                         rockman.setShooting(true);
                         timer[1].start();
@@ -168,39 +174,42 @@ class MainFrame extends JFrame {
                         rockman.setObjx(0);
                     }
                 }
+                if(!bgm.isPlaying()){
+                    bgm.play();
+                }
             }
         });
         timer[1]=new Timer(1, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(been[0].getDirection_Right()) {
-                    been[0].setObjx(been[0].getObjx() + 2);
+                if(bean[0].getDirection_Right()) {
+                    bean[0].setObjx(bean[0].getObjx() + 3);
                 }else{
-                    been[0].setObjx(been[0].getObjx() - 2);
+                    bean[0].setObjx(bean[0].getObjx() - 3);
                 }
-                been[0].setLocation(been[0].getObjx(),been[0].getObjy());
-                if(been[0].getObjx()>1180 || been[0].getObjx()<0){
-                    been[0].setShoot_allow(true);
+                bean[0].setLocation(bean[0].getObjx(), bean[0].getObjy());
+                if(bean[0].getObjx()>1180 || bean[0].getObjx()<0){
+                    bean[0].setShoot_allow(true);
                 }
                 ////////
-                if(been[1].getDirection_Right()) {
-                    been[1].setObjx(been[1].getObjx() + 2);
+                if(bean[1].getDirection_Right()) {
+                    bean[1].setObjx(bean[1].getObjx() + 3);
                 }else{
-                    been[1].setObjx(been[1].getObjx() - 2);
+                    bean[1].setObjx(bean[1].getObjx() - 3);
                 }
-                been[1].setLocation(been[1].getObjx(),been[1].getObjy());
-                if(been[1].getObjx()>1180 || been[1].getObjx()<0){
-                    been[1].setShoot_allow(true);
+                bean[1].setLocation(bean[1].getObjx(), bean[1].getObjy());
+                if(bean[1].getObjx()>1180 || bean[1].getObjx()<0){
+                    bean[1].setShoot_allow(true);
                 }
                 ////////
-                if(been[2].getDirection_Right()) {
-                    been[2].setObjx(been[2].getObjx() + 2);
+                if(bean[2].getDirection_Right()) {
+                    bean[2].setObjx(bean[2].getObjx() + 3);
                 }else{
-                    been[2].setObjx(been[2].getObjx() - 2);
+                    bean[2].setObjx(bean[2].getObjx() - 3);
                 }
-                been[2].setLocation(been[2].getObjx(),been[2].getObjy());
-                if(been[2].getObjx()>1180 || been[2].getObjx()<0){
-                    been[2].setShoot_allow(true);
+                bean[2].setLocation(bean[2].getObjx(), bean[2].getObjy());
+                if(bean[2].getObjx()>1180 || bean[2].getObjx()<0){
+                    bean[2].setShoot_allow(true);
                 }
             }
         });

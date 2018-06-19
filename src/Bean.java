@@ -1,9 +1,9 @@
 import javax.swing.*;
-public class Been extends JLabel{
+public class Bean extends JLabel{
     private int objx,objy;
     private boolean direction_Right,shoot_allow=true;
-    public Been(){
-        Been.this.setIcon(new ImageIcon("Action/been.png"));
+    public Bean(){
+        Bean.this.setIcon(new ImageIcon("Action/bean.png"));
     }
     public void setObjx(int objx) {
         this.objx = objx;
