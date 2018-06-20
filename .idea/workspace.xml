@@ -12,11 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Metall.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Metall.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Metall.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+            <state relative-caret-position="113">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="e#149#150#0" expanded="true" />
                 <element signature="e#181#182#0" expanded="true" />
@@ -24,6 +24,7 @@
                 <element signature="e#236#237#0" expanded="true" />
                 <element signature="e#273#274#0" expanded="true" />
                 <element signature="e#305#306#0" expanded="true" />
+                <element signature="e#333#334#0" expanded="true" />
                 <element signature="e#360#361#0" expanded="true" />
                 <element signature="e#407#408#0" expanded="true" />
                 <element signature="e#445#446#0" expanded="true" />
@@ -32,6 +33,53 @@
                 <element signature="e#532#533#0" expanded="true" />
                 <element signature="e#609#610#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FrameStart.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FrameStart.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="73" column="7" lean-forward="false" selection-start-line="73" selection-start-column="6" selection-end-line="73" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2897#2898#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Rockman.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Rockman.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="516">
+              <caret line="250" column="1" lean-forward="true" selection-start-line="250" selection-start-column="1" selection-end-line="250" selection-end-column="1" />
+              <folding>
+                <element signature="method#Rockman#0;class#Rockman#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MainFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="14" column="37" lean-forward="true" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Bean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Bean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -54,16 +102,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/FrameStart.java" />
         <option value="$PROJECT_DIR$/src/Runnable.java" />
         <option value="$PROJECT_DIR$/src/Syncmethod.java" />
         <option value="$PROJECT_DIR$/src/Rockman_walk.java" />
         <option value="$PROJECT_DIR$/src/Rockman_jump.java" />
         <option value="$PROJECT_DIR$/src/Rockman_Jump.java" />
         <option value="$PROJECT_DIR$/src/Been.java" />
-        <option value="$PROJECT_DIR$/src/MainFrame.java" />
         <option value="$PROJECT_DIR$/src/Rockman.java" />
         <option value="$PROJECT_DIR$/src/Metall.java" />
+        <option value="$PROJECT_DIR$/src/MainFrame.java" />
+        <option value="$PROJECT_DIR$/src/FrameStart.java" />
       </list>
     </option>
   </component>
@@ -113,9 +161,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\b0981\IdeaProjects\untitled10\Action" />
-      <recent name="C:\Users\b0981\IdeaProjects\untitled10\src" />
       <recent name="C:\Users\b0981\IdeaProjects\untitled10\sound" />
+      <recent name="C:\Users\b0981\IdeaProjects\untitled10\src" />
+      <recent name="C:\Users\b0981\IdeaProjects\untitled10\Action" />
       <recent name="C:\Users\b0981\IdeaProjects\untitled10" />
       <recent name="C:\Users\b0981\IdeaProjects\rockman\Action" />
     </key>
@@ -206,7 +254,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16354166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13541667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873806" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -436,24 +484,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FrameStart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="7" column="5" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="21" lean-forward="true" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
@@ -527,31 +557,29 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Rockman.java">
+    <entry file="file://$PROJECT_DIR$/src/Bean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="118" column="37" lean-forward="false" selection-start-line="118" selection-start-column="37" selection-end-line="118" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Rockman#0;class#Rockman#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="186">
+          <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/FrameStart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="25" />
+        <state relative-caret-position="113">
+          <caret line="73" column="7" lean-forward="false" selection-start-line="73" selection-start-column="6" selection-end-line="73" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2897#2898#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Metall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+        <state relative-caret-position="113">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="e#149#150#0" expanded="true" />
             <element signature="e#181#182#0" expanded="true" />
@@ -559,6 +587,7 @@
             <element signature="e#236#237#0" expanded="true" />
             <element signature="e#273#274#0" expanded="true" />
             <element signature="e#305#306#0" expanded="true" />
+            <element signature="e#333#334#0" expanded="true" />
             <element signature="e#360#361#0" expanded="true" />
             <element signature="e#407#408#0" expanded="true" />
             <element signature="e#445#446#0" expanded="true" />
@@ -566,6 +595,26 @@
             <element signature="e#510#511#0" expanded="true" />
             <element signature="e#532#533#0" expanded="true" />
             <element signature="e#609#610#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Rockman.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="250" column="1" lean-forward="true" selection-start-line="250" selection-start-column="1" selection-end-line="250" selection-end-column="1" />
+          <folding>
+            <element signature="method#Rockman#0;class#Rockman#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="14" column="37" lean-forward="true" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

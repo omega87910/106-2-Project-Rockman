@@ -6,15 +6,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 class MainFrame extends JFrame {
-    AudioClip shootsound =new AudioClip(getClass().getResource("sfx3.wav").toString());
-    AudioClip bgm =new AudioClip(getClass().getResource("NinjaGaiden.mp3").toString());
-    Rockman rockman = new Rockman();
-    Timer timer[] =new Timer[2] ;
+    private AudioClip shootsound =new AudioClip(getClass().getResource("sfx3.wav").toString());
+    private AudioClip bgm1 =new AudioClip(getClass().getResource("NinjaGaiden.mp3").toString());
+    private AudioClip bgm2 =new AudioClip(getClass().getResource("RyuHayabusaTheme.mp3").toString());
+    private AudioClip bgm;
+    private Rockman rockman = new Rockman();
+    private Timer timer[] =new Timer[2] ;
     private JPanel jpn =new JPanel();
     private JLabel background1 = new JLabel();
     private JLabel background2 = new JLabel();
     private JLabel background3 = new JLabel();
-    Bean[] bean = new Bean[3];
+    private Bean[] bean = new Bean[3];
     private int lb1X = 0 , lb2X = 884 , lb3X = 1262;
     private ImageIcon icon = new ImageIcon("Action/default-r.png");
     private Container cp;
@@ -23,7 +25,14 @@ class MainFrame extends JFrame {
         game();
         thread.start();
         timer[0].start();
-        bgm.play();
+        if(FrameStart.getbgm()){
+            bgm=bgm1;
+            bgm.play();
+        }else {
+            bgm=bgm2;
+            bgm.play();
+        }
+
     }
     private void game() {
         bean[0]=new Bean();
@@ -175,7 +184,7 @@ class MainFrame extends JFrame {
                     }
                 }
                 if(!bgm.isPlaying()){
-                    bgm.play();
+                        bgm.play();
                 }
             }
         });
