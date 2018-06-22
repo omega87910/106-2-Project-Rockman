@@ -1,71 +1,225 @@
+import javafx.scene.media.AudioClip;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import java.io.*;
 class FrameStart extends JFrame {
+    private String[] str;
+    private AudioClip choose_sound =new AudioClip(getClass().getResource("sound/MMX38.wav").toString());
+    private AudioClip save_sound =new AudioClip(getClass().getResource("sound/MMX9W.wav").toString());
+    private AudioClip option_sound =new AudioClip(getClass().getResource("sound/MMX9M.wav").toString());
+    private AudioClip key_sound =new AudioClip(getClass().getResource("sound/MMX9V.wav").toString());
+    private AudioClip key_sound2 =new AudioClip(getClass().getResource("sound/MMX37.wav").toString());
     private JButton jbtnStart =new JButton("START");
     private JButton jbtnOption =new JButton("OPTION");
     private JButton jbtnExit =new JButton("EXIT");
     private JButton jbtnback = new JButton("←back");
+    private JButton jbtnjump = new JButton("X");
+    private JButton jbtnshoot=new JButton("C");
+    private JButton jbtnsave = new JButton("save");
     private JLabel jlb_BGM =new JLabel("BGM選項");
+    private JLabel jlb_btnset= new JLabel("按鍵設定");
+    private JLabel jlb_jump=new JLabel("JUMP");
+    private JLabel jlb_shoot=new JLabel("SHOOT");
     private static JRadioButton jrbtn_BGM =new JRadioButton("忍者外傳BGM");
     private static JRadioButton jrbtn_BGM2 =new JRadioButton("龍隼BGM");
+    private static JRadioButton jrbtn_BGM3 =new JRadioButton("無");
     private ButtonGroup bgm_group =new ButtonGroup();
     private JPanel jpnTitle =new JPanel();
     private JPanel jpnOption =new JPanel();
-    private static boolean bgm;
-    Container cp;
+    private static int bgm=1;
+    private boolean focus_jump=false,focus_shoot=false;
+    private static int key_jump=KeyEvent.VK_X,key_shoot=KeyEvent.VK_C;
     FrameStart() {
         init();
+        jpnOption.setVisible(false);
         jrbtn_BGM.setSelected(true);
+        try {
+            FileReader fr =new FileReader("option.ini");
+            BufferedReader bfr =new BufferedReader(fr);
+            try {
+                str=bfr.readLine().split("=");
+                System.out.println(str[1]);
+                switch (str[1]){
+                    case "1":
+                        jrbtn_BGM.setSelected(true);
+                        break;
+                    case "2":
+                        jrbtn_BGM2.setSelected(true);
+                        break;
+                    case "3":
+                        jrbtn_BGM3.setSelected(true);
+                        break;
+                }
+                str=bfr.readLine().split("=");
+                System.out.println(str[1]);
+                key_jump=str[1].charAt(0);
+                jbtnjump.setText(str[1]);
+                str=bfr.readLine().split("=");
+                System.out.println(str[1]);
+                key_shoot=str[1].charAt(0);
+                jbtnshoot.setText(str[1]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            try {
+                FileWriter fw =new FileWriter("option.ini");
+                fw.write("BGM="+ bgm);
+                fw.write("\nJUMP="+(char)key_jump);
+                fw.write("\nSHOOT="+(char)key_shoot);
+                fw.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            e.printStackTrace();
+        }
+
     }
     private void init() {
-        cp=this.getContentPane();
+        Container cp = this.getContentPane();
         this.setBounds(300,100,1280,720);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setTitle("Rockman");
         jpnTitle.setLayout(null);
         jpnOption.setLayout(null);
         jpnTitle.add(jbtnStart);
         jpnTitle.add(jbtnOption);
         jpnTitle.add(jbtnExit);
         jpnOption.add(jbtnback);
+        jpnOption.add(jbtnjump);
+        jpnOption.add(jbtnshoot);
+        jpnOption.add(jlb_jump);
+        jpnOption.add(jlb_shoot);
+        jpnOption.add(jlb_btnset);
         jpnOption.add(jrbtn_BGM);
         jpnOption.add(jrbtn_BGM2);
+        jpnOption.add(jrbtn_BGM3);
         jpnOption.add(jlb_BGM);
+        jpnOption.add(jbtnsave);
         bgm_group.add(jrbtn_BGM);
         bgm_group.add(jrbtn_BGM2);
+        bgm_group.add(jrbtn_BGM3);
         /////////////////////////////////////////////////////////////////////////
         jbtnStart.setBounds(600,300,100,60);
         jbtnOption.setBounds(600,400,100,60);
         jbtnExit.setBounds(600,500,100,60);
         jbtnback.setBounds(0,0,80,30);
-        jlb_BGM.setBounds(150,150,100,30);
+        jlb_BGM.setBounds(80,150,100,30);
         jrbtn_BGM.setBounds(80,200,120,30);
         jrbtn_BGM2.setBounds(200,200,100,30);
-        jpnOption.setBounds(-1280,0,1280,720);
+        jrbtn_BGM3.setBounds(300,200,100,30);
+        jbtnsave.setBounds(1100,600,100,30);
+        jlb_btnset.setBounds(80,250,100,30);
+        jlb_jump.setBounds(80,300,100,30);
+        jbtnjump.setBounds(150,300,100,30);
+        jlb_shoot.setBounds(80,350,100,30);
+        jbtnshoot.setBounds(150,350,100,30);
+        jpnOption.setBounds(0,0,1280,720);
         jpnTitle.setBounds(0,0,1280,720);
         cp.add(jpnOption);
         cp.add(jpnTitle);
         jbtnStart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainFrame mf =new MainFrame();
+                MainFrame mf = new MainFrame();
                 mf.setVisible(true);
                 FrameStart.this.dispose();
+            }
+        });
+        jbtnStart.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                choose_sound.play();
+            }
+        });
+        jbtnjump.addKeyListener(new KeyAdapter() {
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                        if(focus_jump){
+                            key_sound2.play();
+                            key_jump=e.getKeyCode();
+                            jbtnjump.setText(Character.toString((char)e.getKeyCode()));
+                            focus_jump=false;
+                        }
+                    }
+                });
+        jbtnjump.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                focus_jump = true;
+                key_sound.play();
+            }
+        });
+        jbtnshoot.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(focus_shoot){
+                    key_sound2.play();
+                    key_shoot=e.getKeyCode();
+                    jbtnshoot.setText(Character.toString((char)e.getKeyCode()));
+                    focus_shoot=false;
+                }
+            }
+        });
+        jbtnshoot.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                focus_shoot=true;
+                key_sound.play();
             }
         });
         jbtnOption.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    jpnTitle.setBounds(-1280,0,1280,720);
-                    jpnOption.setBounds(0,0,1280,720);
+                    option_sound.play(1000);
+                    jpnTitle.setVisible(false);
+                    jpnOption.setVisible(true);
+            }
+        });
+        jbtnOption.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                choose_sound.play();
             }
         });
         jbtnback.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jpnTitle.setBounds(0,0,1280,720);
-                jpnOption.setBounds(-1280,0,1280,720);
+                jpnTitle.setVisible(true);
+                jpnOption.setVisible(false);
+                try {
+                    FileReader fr =new FileReader("option.ini");
+                    BufferedReader bfr =new BufferedReader(fr);
+                    try {
+                        str=bfr.readLine().split("=");
+                        System.out.println(str[1]);
+                        switch (str[1]){
+                            case "1":
+                                jrbtn_BGM.setSelected(true);
+                                break;
+                            case "2":
+                                jrbtn_BGM2.setSelected(true);
+                                break;
+                            case "3":
+                                jrbtn_BGM3.setSelected(true);
+                                break;
+                        }
+                        str=bfr.readLine().split("=");
+                        System.out.println(str[1]);
+                        key_jump=str[1].charAt(0);
+                        jbtnjump.setText(str[1]);
+                        str=bfr.readLine().split("=");
+                        System.out.println(str[1]);
+                        key_shoot=str[1].charAt(0);
+                        jbtnshoot.setText(str[1]);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                } catch (FileNotFoundException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
         jbtnExit.addActionListener(new ActionListener() {
@@ -74,13 +228,45 @@ class FrameStart extends JFrame {
                 System.exit(0);
             }
         });
+
+        jbtnExit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                choose_sound.play();
+            }
+        });
+        jbtnsave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                save_sound.play();
+                getbgm();
+                try {
+                    FileWriter fw =new FileWriter("option.ini");
+                    fw.write("BGM="+ bgm);
+                    fw.write("\nJUMP="+(char)key_jump);
+                    fw.write("\nSHOOT="+(char)key_shoot);
+                    fw.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
     }
-    public static boolean getbgm(){
+    public static int getbgm(){
         if(jrbtn_BGM.isSelected()){
-            bgm=true;
+            bgm=1;
+        }else if(jrbtn_BGM2.isSelected()){
+            bgm=2;
         }else{
-            bgm=false;
+            bgm=3;
         }
         return bgm;
     }
+    public static int getKey_jump(){
+        return key_jump;
+    }
+    public static int getKey_shoot(){
+        return key_shoot;
+    }
+
 }

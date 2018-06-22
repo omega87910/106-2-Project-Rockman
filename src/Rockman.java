@@ -1,15 +1,18 @@
 import javafx.scene.media.AudioClip;
 import javax.swing.*;
 public class Rockman extends JLabel implements Runnable {
-    private int objx = 0, objy = 720 - 203, v = 65, t = 1, runstep = -6, breath = 0,shootrest=0;
-    private boolean running, jumpping, shooting = false, direction_Right;
-    private AudioClip falldown=new AudioClip(getClass().getResource("sfx1.wav").toString());
+    private   int objx = 0;
+    private   int objy = 720 - 203;
+    private int v = 60, t = 1, runstep = -6, breath = 0,shootrest=0;
+    private boolean running, jumpping, shooting = false, direction_Right=true;
+    private AudioClip falldown=new AudioClip(getClass().getResource("sound/sfx1.wav").toString());
     Rockman() {
+        Rockman.this.setIcon(new ImageIcon("Action/default-r.png"));
     }
     public void setObjx(int objx1) {
         this.objx = objx1;
     }
-    public int getObjx() {
+    public  int getObjx() {
         return objx;
     }
     public void setDirection_Right(boolean direction_Right1) {
@@ -33,7 +36,7 @@ public class Rockman extends JLabel implements Runnable {
     public void setObjy(int objy1) {
         this.objy = objy1;
     }
-    public int getObjy(){
+    public  int getObjy(){
         return objy;
     }
     public void run_stop() {
@@ -58,7 +61,7 @@ public class Rockman extends JLabel implements Runnable {
                     System.out.println("right");
                     if (runstep >= 0) {
                         if(this.getX()<1180) {
-                            objx += 24;
+                            objx += 20;
                         }
                         if (!jumpping) {
                             if (!shooting) {
@@ -96,7 +99,7 @@ public class Rockman extends JLabel implements Runnable {
                                         break;
                                 }
                             }
-                        } else {
+                        } else {//跳躍且射擊
                             if (shooting) {
                                 System.out.println("shoot");
                                 if (direction_Right) {
@@ -215,9 +218,9 @@ public class Rockman extends JLabel implements Runnable {
                 runstep = 0;
                 System.out.println("jump");
                 v = v - 5 * t;
-                if (v <= 0 && v > -65) {
+                if (v <= 0 && v > -60) {
                     objy -= v * t + (1 / 2) * (-10 * t * t);
-                } else if (v == -65) {
+                } else if (v == -60) {
                     falldown.play();
                     if (direction_Right) {
                         Rockman.this.setIcon(new ImageIcon("Action/default-r.png"));
@@ -225,13 +228,13 @@ public class Rockman extends JLabel implements Runnable {
                         Rockman.this.setIcon(new ImageIcon("Action/default-l.png"));
                     }
                     jumpping = false;
-                    v = 65;
+                    v = 60;
                 } else if (v > 0) {
                     objy -= v * t + (1 / 2) * (-10 * t * t);
                 }
                 Rockman.this.setBounds(objx, objy + 12, Rockman.this.getIcon().getIconWidth(), Rockman.this.getIcon().getIconHeight());
             }
-            /////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////shoottime_limit/////////////////////////////////////////////////////////
             if(shooting){
                 shootrest+=2;
                 if(shootrest%10==0){
