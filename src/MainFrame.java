@@ -16,7 +16,7 @@ class MainFrame extends JFrame {
     private AudioClip bgm;
     private int key_jump = FrameStart.getKey_jump(), key_shoot = FrameStart.getKey_shoot();
     private Rockman rockman = new Rockman();
-    private Timer timer[] = new Timer[3];
+    private Timer timer[] = new Timer[4];
     private JPanel jpn = new JPanel();
     private JLabel background1 = new JLabel();
     private JLabel background2 = new JLabel();
@@ -26,6 +26,7 @@ class MainFrame extends JFrame {
     private JLabel jlb_thebestscore =new JLabel();
     private Bean[] bean = new Bean[3];
     private Coin[] coin = new Coin[6];
+    private PetitGoblin[] petitGoblin =new PetitGoblin[3];
     private Metall[] metall = new Metall[3];
     private int lb1X = 0, lb2X = 884, lb3X = 1262;
     private Random random = new Random();
@@ -47,6 +48,9 @@ class MainFrame extends JFrame {
         Thread metall0_thread = new Thread(metall[0]);
         Thread metall1_thread = new Thread(metall[1]);
         Thread metall2_thread = new Thread(metall[2]);
+        Thread petitgoblin0_thread =new Thread(petitGoblin[0]);
+        Thread petitgoblin1_thread =new Thread(petitGoblin[1]);
+        Thread petitgoblin2_thread =new Thread(petitGoblin[2]);
         rockman_thread.start();
         bean1_thread.start();
         bean2_thread.start();
@@ -60,9 +64,13 @@ class MainFrame extends JFrame {
         metall0_thread.start();
         metall1_thread.start();
         metall2_thread.start();
+        petitgoblin0_thread.start();
+        petitgoblin1_thread.start();
+        petitgoblin2_thread.start();
         timer[0].start();
         timer[1].start();
         timer[2].start();
+        timer[3].start();
         switch (FrameStart.getbgm()) {
             case 1:
                 bgm = new AudioClip(getClass().getResource("sound/NinjaGaiden.mp3").toString());
@@ -79,7 +87,6 @@ class MainFrame extends JFrame {
             bgm.play(0.8);
         }
     }
-
     private void game() {
         bean[0] = new Bean();
         bean[1] = new Bean();
@@ -93,6 +100,9 @@ class MainFrame extends JFrame {
         metall[0] = new Metall();
         metall[1] = new Metall();
         metall[2] = new Metall();
+        petitGoblin[0]=new PetitGoblin();
+        petitGoblin[1]=new PetitGoblin();
+        petitGoblin[2]=new PetitGoblin();
         this.setTitle("Rockman");
         this.setBounds(300, 100, 1280 - 10, 720);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -111,10 +121,14 @@ class MainFrame extends JFrame {
         background3.setBounds(1258, 0, 884, 685);
         background3.setIcon(new ImageIcon("./bg1.png"));
         jpn.add(jlb_retry);
+        jpn.add(jlb_thebestscore);
         jpn.add(rockman);
         jpn.add(bean[0]);
         jpn.add(bean[1]);
         jpn.add(bean[2]);
+        jpn.add(petitGoblin[0]);
+        jpn.add(petitGoblin[1]);
+        jpn.add(petitGoblin[2]);
         jpn.add(metall[0]);
         jpn.add(metall[1]);
         jpn.add(metall[2]);
@@ -125,7 +139,6 @@ class MainFrame extends JFrame {
         jpn.add(coin[4]);
         jpn.add(coin[5]);
         jpn.add(jlb_score);
-        jpn.add(jlb_thebestscore);
         jpn.add(background1);
         jpn.add(background2);
         jpn.add(background3);
@@ -256,7 +269,7 @@ class MainFrame extends JFrame {
                     }
                     for (int i = 0; i < 3; i++) {
                         if (!rockman.getShooting()) {
-                            if (rockman.getX() + rockman.getIcon().getIconWidth() >= metall[i].getX() + 30 && rockman.getX() + rockman.getIcon().getIconWidth() <= metall[i].getX() + metall[i].getIcon().getIconWidth() - 30 || (rockman.getX() >= metall[i].getX() - 30 && rockman.getX() <= metall[i].getX() + metall[i].getIcon().getIconWidth() - 30)) {
+                            if (rockman.getX() + rockman.getIcon().getIconWidth() >= metall[i].getX() + 30 && rockman.getX() + rockman.getIcon().getIconWidth() <= metall[i].getX() + metall[i].getIcon().getIconWidth() - 30 || (rockman.getX() >= metall[i].getX() - 30 && rockman.getX() <= metall[i].getX() + metall[i].getIcon().getIconWidth() - 30)||(rockman.getX()+rockman.getX() + rockman.getIcon().getIconWidth())/2>=metall[i].getX() + 30&&(rockman.getX()+rockman.getX() + rockman.getIcon().getIconWidth())/2<=metall[i].getX() + metall[i].getIcon().getIconWidth() - 30) {
                                 if (rockman.getY() + rockman.getIcon().getIconHeight() >= metall[i].getY() + 10 && rockman.getY() + rockman.getIcon().getIconHeight() <= metall[i].getY() + metall[i].getIcon().getIconHeight() + 10) {
                                     rockman.setDead(true);
                                     rockman.setV(30);
@@ -272,6 +285,14 @@ class MainFrame extends JFrame {
                                     dead_sound.play();
                                     System.out.println("dead");
                                 }
+                            }
+                        }
+                        if (rockman.getX() + rockman.getIcon().getIconWidth() >= petitGoblin[i].getX()+5  && rockman.getX() + rockman.getIcon().getIconWidth() <= petitGoblin[i].getX() + petitGoblin[i].getIcon().getIconWidth()-5 || (rockman.getX() >= petitGoblin[i].getX() - 10 && rockman.getX() <= petitGoblin[i].getX() + petitGoblin[i].getIcon().getIconWidth() - 10)||((rockman.getX()+rockman.getX() + rockman.getIcon().getIconWidth())/2>= petitGoblin[i].getX()+5 && (rockman.getX()+rockman.getX() + rockman.getIcon().getIconWidth())/2<=petitGoblin[i].getX()+petitGoblin[i].getIcon().getIconWidth())) {
+                            if (rockman.getY() + rockman.getIcon().getIconHeight() >= petitGoblin[i].getY()+5 && rockman.getY() + rockman.getIcon().getIconHeight() <= petitGoblin[i].getY() + petitGoblin[i].getIcon().getIconHeight()-5 ||(rockman.getY()<=petitGoblin[i].getY()+petitGoblin[i].getIcon().getIconHeight()&&rockman.getY()>=petitGoblin[i].getY())) {
+                                rockman.setDead(true);
+                                rockman.setV(30);
+                                dead_sound.play();
+                                System.out.println("dead");
                             }
                         }
                     }
@@ -292,8 +313,17 @@ class MainFrame extends JFrame {
                             }
                             System.out.println("get");
                         }
+                        if ((bean[i].getObjx() + (bean[i].getObjx() + bean[i].getIcon().getIconWidth())) / 2 >= petitGoblin[j].getX() && (bean[i].getObjx() + (bean[i].getObjx() + bean[i].getIcon().getIconWidth())) / 2 <= petitGoblin[j].getX() + petitGoblin[j].getIcon().getIconWidth() && (bean[i].getObjy() + (bean[i].getObjy() + bean[i].getIcon().getIconHeight())) / 2 + 5 >= petitGoblin[j].getY() && (bean[i].getObjy() + (bean[i].getObjy() + bean[i].getIcon().getIconHeight())) / 2 <= petitGoblin[j].getY() + petitGoblin[j].getIcon().getIconHeight()) {
+                            bean[i].setHit(true);
+                            bean[i].setObjx(1500);
+                            petitGoblin[j].setObjy(-200);
+                            score += 500;
+                            jlb_score.setText("SCORE:" + score);
+                            enemy_deadsound.play();
+                        }
+                            System.out.println("get");
+                        }
                     }
-                }
                 if (rockman.getDead()) {
                     if(score>thebestscore) {
                         thebestscore = score;
@@ -342,7 +372,24 @@ class MainFrame extends JFrame {
                         }
                     }
                 }
-                timer[2].setDelay(800 + random.nextInt(8) * 100);
+                timer[2].setDelay(1000 + random.nextInt(8) * 100);
+            }
+        });
+        timer[3]=new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (random.nextBoolean()) {
+                    for (int i = 0; i < 3; i++) {
+                        if (!petitGoblin[i].getShow()) {
+                            petitGoblin[i].setV(random.nextInt(5)+3);
+                            petitGoblin[i].setObjx(1280);
+                            petitGoblin[i].setShow(true);
+                            petitGoblin[i].setObjy(200+random.nextInt(300));
+                            break;
+                        }
+                    }
+                }
+                timer[3].setDelay(500 + random.nextInt(8) * 100);
             }
         });
         /////////////////////////closeeye//////////////////////////////

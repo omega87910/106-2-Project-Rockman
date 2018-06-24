@@ -59,7 +59,7 @@ public class Metall extends JLabel implements Runnable{
                     defence = false;
                     Metall.this.setIcon(new ImageIcon("Action/metall_open.png"));
                     Metall.this.setBounds(objx, objy - 18, Metall.this.getIcon().getIconWidth(), Metall.this.getIcon().getIconHeight());
-                    defence_time_random = rd.nextInt(200) + 100;
+                    defence_time_random = rd.nextInt(250) + 100;
                 }
             }
             if(objx<=-150||dead){

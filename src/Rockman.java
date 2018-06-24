@@ -276,7 +276,7 @@ public class Rockman extends JLabel implements Runnable {
                     if (v <= 0 && v > -200) {
                         objy -= v * t + (1 / 2) * (-10 * t * t);
                     } else if (v <= -200) {
-                        dead=false;
+
                     } else if (v > 0) {
                         objy -= v * t + (1 / 2) * (-10 * t * t);
                     }
