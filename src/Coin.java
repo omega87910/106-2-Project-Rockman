@@ -1,7 +1,7 @@
 import javax.swing.*;
 public class Coin extends JLabel implements Runnable{
     private int objx,objy;
-    private boolean show=false,rm=false;
+    private boolean show=false;
     public void setObjx(int objx) {
         this.objx = objx;
     }
@@ -27,10 +27,9 @@ public class Coin extends JLabel implements Runnable{
     public void run() {
         while(true){
             if(show) {
-                objx -= 5;
                 Coin.this.setBounds(objx, objy, Coin.this.getIcon().getIconWidth(), Coin.this.getIcon().getIconHeight());
                 this.setVisible(true);
-                if(objx<=-50 ){
+                if(objx<=-150 ){
                     show=false;
                 }
             }

@@ -30,7 +30,7 @@ class FrameStart extends JFrame {
     private JPanel jpnOption =new JPanel();
     private static int bgm=1;
     private boolean focus_jump=false,focus_shoot=false;
-    private static int key_jump=KeyEvent.VK_X,key_shoot=KeyEvent.VK_C;
+    private static int key_jump=KeyEvent.VK_X,key_shoot=KeyEvent.VK_C,thebestscore=0;
     FrameStart() {
         init();
         jpnOption.setVisible(false);
@@ -60,6 +60,8 @@ class FrameStart extends JFrame {
                 System.out.println(str[1]);
                 key_shoot=str[1].charAt(0);
                 jbtnshoot.setText(str[1]);
+                str=bfr.readLine().split("=");
+                thebestscore=Integer.parseInt(str[1]);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -69,13 +71,13 @@ class FrameStart extends JFrame {
                 fw.write("BGM="+ bgm);
                 fw.write("\nJUMP="+(char)key_jump);
                 fw.write("\nSHOOT="+(char)key_shoot);
+                fw.write("\nTHE_BEST_SCORE="+thebestscore);
                 fw.close();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
             e.printStackTrace();
         }
-
     }
     private void init() {
         Container cp = this.getContentPane();
@@ -245,6 +247,7 @@ class FrameStart extends JFrame {
                     fw.write("BGM="+ bgm);
                     fw.write("\nJUMP="+(char)key_jump);
                     fw.write("\nSHOOT="+(char)key_shoot);
+                    fw.write("\nTHE_BEST_SCORE="+thebestscore);
                     fw.close();
                 } catch (IOException e1) {
                     e1.printStackTrace();
@@ -267,6 +270,9 @@ class FrameStart extends JFrame {
     }
     public static int getKey_shoot(){
         return key_shoot;
+    }
+    public static int getThebestscore(){
+        return thebestscore;
     }
 
 }
