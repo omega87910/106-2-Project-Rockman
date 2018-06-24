@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class PetitGoblin extends JLabel implements Runnable {
-    private int objx, objy,v=5;
+    private int objx, objy=-100,v=5;
     private Boolean show = false;
     public void setObjx(int objx1) {
         this.objx = objx1;

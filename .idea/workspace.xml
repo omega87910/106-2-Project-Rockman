@@ -18,8 +18,8 @@
       <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="108" column="8" lean-forward="false" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="33" />
+            <state relative-caret-position="1302">
+              <caret line="81" column="27" lean-forward="false" selection-start-line="81" selection-start-column="27" selection-end-line="81" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -30,7 +30,7 @@
       <file leaf-file-name="FrameStart.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FrameStart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
+            <state relative-caret-position="4433">
               <caret line="143" column="34" lean-forward="false" selection-start-line="143" selection-start-column="34" selection-end-line="143" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -48,7 +48,7 @@
       <file leaf-file-name="Rockman.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Rockman.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2831">
+            <state relative-caret-position="6551">
               <caret line="278" column="0" lean-forward="false" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
               <folding>
                 <element signature="e#453#454#0" expanded="true" />
@@ -62,6 +62,16 @@
                 <element signature="e#1706#1707#0" expanded="true" />
                 <element signature="e#1733#1734#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PetitGoblin.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PetitGoblin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="3" column="36" lean-forward="true" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -95,10 +105,10 @@
         <option value="$PROJECT_DIR$/src/Bean.java" />
         <option value="$PROJECT_DIR$/src/Coin.java" />
         <option value="$PROJECT_DIR$/src/Metall.java" />
-        <option value="$PROJECT_DIR$/src/PetitGoblin.java" />
         <option value="$PROJECT_DIR$/src/Rockman.java" />
-        <option value="$PROJECT_DIR$/src/MainFrame.java" />
         <option value="$PROJECT_DIR$/src/FrameStart.java" />
+        <option value="$PROJECT_DIR$/src/MainFrame.java" />
+        <option value="$PROJECT_DIR$/src/PetitGoblin.java" />
       </list>
     </option>
   </component>
@@ -153,8 +163,8 @@
       <recent name="C:\Users\b0981\IdeaProjects\rockman\Action" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\b0981\IdeaProjects\untitled10" />
       <recent name="C:\Users\b0981\IdeaProjects\untitled10\src\sound" />
+      <recent name="C:\Users\b0981\IdeaProjects\untitled10" />
       <recent name="C:\Users\b0981\IdeaProjects\untitled10\Action" />
       <recent name="C:\Users\b0981\IdeaProjects\untitled10\src" />
       <recent name="C:\Users\b0981\IdeaProjects\untitled10\sound" />
@@ -228,6 +238,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -242,7 +253,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13854167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13854167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873806" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -370,31 +381,6 @@
             <element signature="imports" expanded="false" />
             <element signature="e#846#847#0" expanded="false" />
             <element signature="e#878#879#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PetitGoblin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="e#186#187#0" expanded="false" />
-            <element signature="e#219#220#0" expanded="false" />
-            <element signature="e#249#250#0" expanded="false" />
-            <element signature="e#275#276#0" expanded="false" />
-            <element signature="e#302#303#0" expanded="false" />
-            <element signature="e#329#330#0" expanded="false" />
-            <element signature="e#367#368#0" expanded="false" />
-            <element signature="e#400#401#0" expanded="false" />
-            <element signature="e#428#429#0" expanded="false" />
-            <element signature="e#455#456#0" expanded="false" />
-            <element signature="e#496#497#0" expanded="false" />
-            <element signature="e#528#529#0" expanded="false" />
-            <element signature="e#560#561#0" expanded="false" />
-            <element signature="e#587#588#0" expanded="false" />
-            <element signature="e#608#609#0" expanded="false" />
-            <element signature="e#691#692#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -552,9 +538,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/background.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1302">
+          <caret line="81" column="27" lean-forward="false" selection-start-line="81" selection-start-column="27" selection-end-line="81" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Rockman.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2831">
+        <state relative-caret-position="6551">
           <caret line="278" column="0" lean-forward="false" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
           <folding>
             <element signature="e#453#454#0" expanded="true" />
@@ -571,24 +572,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/background.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/PetitGoblin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="108" column="8" lean-forward="false" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="93">
+          <caret line="3" column="36" lean-forward="true" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FrameStart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="4433">
           <caret line="143" column="34" lean-forward="false" selection-start-line="143" selection-start-column="34" selection-end-line="143" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
