@@ -6,6 +6,7 @@ import java.awt.event.*;
 import java.io.*;
 class FrameStart extends JFrame {
     private String[] str;
+    private AudioClip title_sound =new AudioClip(getClass().getResource("sound/MegaMan11OST.mp3").toString());
     private AudioClip choose_sound =new AudioClip(getClass().getResource("sound/MMX38.wav").toString());
     private AudioClip save_sound =new AudioClip(getClass().getResource("sound/MMX9W.wav").toString());
     private AudioClip option_sound =new AudioClip(getClass().getResource("sound/MMX9M.wav").toString());
@@ -18,6 +19,8 @@ class FrameStart extends JFrame {
     private JButton jbtnjump = new JButton("X");
     private JButton jbtnshoot=new JButton("C");
     private JButton jbtnsave = new JButton("save");
+    private JLabel jlb_title =new JLabel();
+    private JLabel jlb_option =new JLabel();
     private JLabel jlb_BGM =new JLabel("BGM選項");
     private JLabel jlb_btnset= new JLabel("按鍵設定");
     private JLabel jlb_jump=new JLabel("JUMP");
@@ -32,6 +35,8 @@ class FrameStart extends JFrame {
     private boolean focus_jump=false,focus_shoot=false;
     private static int key_jump=KeyEvent.VK_X,key_shoot=KeyEvent.VK_C,thebestscore=0;
     FrameStart() {
+        title_sound.setCycleCount(AudioClip.INDEFINITE);
+        title_sound.play();
         init();
         jpnOption.setVisible(false);
         jrbtn_BGM.setSelected(true);
@@ -84,12 +89,15 @@ class FrameStart extends JFrame {
         this.setBounds(300,100,1280,720);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("Rockman");
+        this.setResizable(false);
+        jlb_title.setIcon(new ImageIcon("rockman_Title.png"));
+        jlb_option.setIcon(new ImageIcon("rockman11.jpg"));
         jpnTitle.setLayout(null);
         jpnOption.setLayout(null);
         jpnTitle.add(jbtnStart);
         jpnTitle.add(jbtnOption);
         jpnTitle.add(jbtnExit);
-        jpnOption.add(jbtnback);
+        jpnTitle.add(jlb_title);
         jpnOption.add(jbtnjump);
         jpnOption.add(jbtnshoot);
         jpnOption.add(jlb_jump);
@@ -99,14 +107,16 @@ class FrameStart extends JFrame {
         jpnOption.add(jrbtn_BGM2);
         jpnOption.add(jrbtn_BGM3);
         jpnOption.add(jlb_BGM);
+        jpnOption.add(jbtnback);
         jpnOption.add(jbtnsave);
+        jpnOption.add(jlb_option);
         bgm_group.add(jrbtn_BGM);
         bgm_group.add(jrbtn_BGM2);
         bgm_group.add(jrbtn_BGM3);
         /////////////////////////////////////////////////////////////////////////
-        jbtnStart.setBounds(600,300,100,60);
-        jbtnOption.setBounds(600,400,100,60);
-        jbtnExit.setBounds(600,500,100,60);
+        jbtnStart.setBounds(600,400,100,60);
+        jbtnOption.setBounds(600,500,100,60);
+        jbtnExit.setBounds(600,600,100,60);
         jbtnback.setBounds(0,0,80,30);
         jlb_BGM.setBounds(80,150,100,30);
         jrbtn_BGM.setBounds(80,200,120,30);
@@ -120,11 +130,24 @@ class FrameStart extends JFrame {
         jbtnshoot.setBounds(150,350,100,30);
         jpnOption.setBounds(0,0,1280,720);
         jpnTitle.setBounds(0,0,1280,720);
+        jlb_title.setBounds(0,0,jlb_title.getIcon().getIconWidth(),jlb_title.getIcon().getIconHeight());
+        jlb_option.setBounds(0,0,jlb_option.getIcon().getIconWidth(),jlb_option.getIcon().getIconHeight());
+        jlb_BGM.setForeground(Color.ORANGE);
+        jlb_jump.setForeground(Color.ORANGE);
+        jlb_shoot.setForeground(Color.ORANGE);
+        jlb_btnset.setForeground(Color.ORANGE);
+        jrbtn_BGM.setForeground(Color.ORANGE);
+        jrbtn_BGM2.setForeground(Color.ORANGE);
+        jrbtn_BGM3.setForeground(Color.ORANGE);
+        jrbtn_BGM.setOpaque(false);
+        jrbtn_BGM2.setOpaque(false);
+        jrbtn_BGM3.setOpaque(false);
         cp.add(jpnOption);
         cp.add(jpnTitle);
         jbtnStart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                title_sound.stop();
                 MainFrame mf = new MainFrame();
                 mf.setVisible(true);
                 FrameStart.this.dispose();
