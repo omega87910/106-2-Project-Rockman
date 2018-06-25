@@ -5,7 +5,7 @@ public class Metall extends JLabel implements Runnable {
     private int objx, objy = -100;
     private boolean show = false, defence = true, dead;
     private Random rd = new Random();
-    private int defence_time = 0, defence_time_random, open_time = 0;
+    private int defence_time = 0, defence_time_random, open_time = 0,open_time_random;
 
     public void setObjy(int objy) {
         this.objy = objy;
@@ -38,6 +38,7 @@ public class Metall extends JLabel implements Runnable {
     public Metall() {
         Metall.this.setIcon(new ImageIcon(this.getClass().getResource("Action/metall_close.png")));
         defence_time_random = rd.nextInt(100) + 30;
+        open_time_random=50+rd.nextInt(80);
     }
 
     @Override
@@ -50,7 +51,8 @@ public class Metall extends JLabel implements Runnable {
                 } else {
                     open_time++;
                     Metall.this.setBounds(objx, objy - 18, Metall.this.getIcon().getIconWidth(), Metall.this.getIcon().getIconHeight());
-                    if (open_time >= 150) {
+                    if (open_time >= open_time_random) {
+                        open_time_random=50+rd.nextInt(80);
                         defence = true;
                         open_time = 0;
                     }

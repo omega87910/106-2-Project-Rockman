@@ -213,16 +213,17 @@ class MainFrame extends JFrame {
                     }
                 }
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    if(rockman.getDirection_Right()) {
+                    if (rockman.getDirection_Right()) {
                         rockman.run_stop();
                     }
                     rockman.setRunstep(0);
                 }
-                if(e.getKeyCode() == KeyEvent.VK_LEFT){
-                    if(!rockman.getDirection_Right()) {
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                    if (!rockman.getDirection_Right()) {
                         rockman.run_stop();
                     }
                     rockman.setRunstep(0);
