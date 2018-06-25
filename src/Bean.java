@@ -5,7 +5,7 @@ public class Bean extends JLabel implements Runnable {
     private boolean direction_Right, shoot_allow = true, hit = false;
 
     public Bean() {
-        Bean.this.setIcon(new ImageIcon("Action/bean.png"));
+        Bean.this.setIcon(new ImageIcon(this.getClass().getResource("Action/bean.png")));
     }
 
     public void setObjx(int objx1) {
@@ -26,10 +26,6 @@ public class Bean extends JLabel implements Runnable {
 
     public void setDirection_Right(boolean direction_Right1) {
         this.direction_Right = direction_Right1;
-    }
-
-    public boolean getDirection_Right() {
-        return direction_Right;
     }
 
     public void setShoot_allow(boolean shoot_allow1) {
@@ -56,7 +52,7 @@ public class Bean extends JLabel implements Runnable {
                 if (objx > 1180 || objx < 0) {
                     this.setShoot_allow(true);
                 }
-            } else{
+            } else {
                 this.setShoot_allow(true);
             }
             Bean.this.setBounds(objx, objy, Bean.this.getIcon().getIconWidth(), Bean.this.getIcon().getIconHeight());

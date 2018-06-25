@@ -8,11 +8,11 @@ import java.io.IOException;
 import java.util.Random;
 
 class MainFrame extends JFrame {
-    private AudioClip shootsound = new AudioClip(getClass().getResource("sound/sfx3.wav").toString());
-    private AudioClip coinsound = new AudioClip(getClass().getResource("sound/coin.wav").toString());
-    private AudioClip enemy_deadsound = new AudioClip(getClass().getResource("sound/sfx6.wav").toString());
-    private AudioClip enemy_defencesound = new AudioClip(getClass().getResource("sound/sfx7.wav").toString());
-    private AudioClip dead_sound = new AudioClip(getClass().getResource("sound/sfx5.wav").toString());
+    private AudioClip shootsound = new AudioClip(getClass().getResource("sound/sound02.wav").toString());
+    private AudioClip coinsound = new AudioClip(getClass().getResource("sound/sound12.wav").toString());
+    private AudioClip enemy_deadsound = new AudioClip(getClass().getResource("sound/sound05.wav").toString());
+    private AudioClip enemy_defencesound = new AudioClip(getClass().getResource("sound/sound06.wav").toString());
+    private AudioClip dead_sound = new AudioClip(getClass().getResource("sound/sound04.wav").toString());
     private AudioClip bgm;
     private int key_jump = FrameStart.getKey_jump(), key_shoot = FrameStart.getKey_shoot();
     private Rockman rockman = new Rockman();
@@ -23,14 +23,14 @@ class MainFrame extends JFrame {
     private JLabel background3 = new JLabel();
     private JLabel jlb_retry = new JLabel("Retry");
     private JLabel jlb_score = new JLabel();
-    private JLabel jlb_thebestscore =new JLabel();
+    private JLabel jlb_thebestscore = new JLabel();
     private Bean[] bean = new Bean[3];
     private Coin[] coin = new Coin[6];
-    private PetitGoblin[] petitGoblin =new PetitGoblin[3];
+    private PetitGoblin[] petitGoblin = new PetitGoblin[3];
     private Metall[] metall = new Metall[3];
     private int lb1X = 0, lb2X = 884, lb3X = 1262;
     private Random random = new Random();
-    private int score = 0,thebestscore=FrameStart.getThebestscore();
+    private int score = 0, thebestscore = FrameStart.getThebestscore();
     private Container cp;
 
     MainFrame() {
@@ -48,9 +48,9 @@ class MainFrame extends JFrame {
         Thread metall0_thread = new Thread(metall[0]);
         Thread metall1_thread = new Thread(metall[1]);
         Thread metall2_thread = new Thread(metall[2]);
-        Thread petitgoblin0_thread =new Thread(petitGoblin[0]);
-        Thread petitgoblin1_thread =new Thread(petitGoblin[1]);
-        Thread petitgoblin2_thread =new Thread(petitGoblin[2]);
+        Thread petitgoblin0_thread = new Thread(petitGoblin[0]);
+        Thread petitgoblin1_thread = new Thread(petitGoblin[1]);
+        Thread petitgoblin2_thread = new Thread(petitGoblin[2]);
         rockman_thread.start();
         bean1_thread.start();
         bean2_thread.start();
@@ -87,6 +87,7 @@ class MainFrame extends JFrame {
             bgm.play(0.8);
         }
     }
+
     private void game() {
         bean[0] = new Bean();
         bean[1] = new Bean();
@@ -100,9 +101,9 @@ class MainFrame extends JFrame {
         metall[0] = new Metall();
         metall[1] = new Metall();
         metall[2] = new Metall();
-        petitGoblin[0]=new PetitGoblin();
-        petitGoblin[1]=new PetitGoblin();
-        petitGoblin[2]=new PetitGoblin();
+        petitGoblin[0] = new PetitGoblin();
+        petitGoblin[1] = new PetitGoblin();
+        petitGoblin[2] = new PetitGoblin();
         this.setTitle("Rockman");
         this.setBounds(300, 100, 1280 - 10, 720);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -112,14 +113,14 @@ class MainFrame extends JFrame {
         jlb_score.setBounds(800, 0, 800, 100);
         jlb_score.setFont(new Font(null, Font.BOLD, 50));
         jlb_score.setText("SCORE:" + score);
-        jlb_thebestscore.setFont(new Font(null,Font.BOLD,50));
+        jlb_thebestscore.setFont(new Font(null, Font.BOLD, 50));
         jlb_thebestscore.setText("THE BEST SCORE:" + thebestscore);
         background1.setBounds(0, 0, 884, 685);
-        background1.setIcon(new ImageIcon("./bg1.png"));
+        background1.setIcon(new ImageIcon(this.getClass().getResource("background/bg1.png")));
         background2.setBounds(880, 0, 380, 685);
-        background2.setIcon(new ImageIcon("./bg2.png"));
+        background2.setIcon(new ImageIcon(this.getClass().getResource("background/bg2.png")));
         background3.setBounds(1258, 0, 884, 685);
-        background3.setIcon(new ImageIcon("./bg1.png"));
+        background3.setIcon(new ImageIcon(this.getClass().getResource("background/bg1.png")));
         jpn.add(jlb_retry);
         jpn.add(jlb_thebestscore);
         jpn.add(rockman);
@@ -158,28 +159,28 @@ class MainFrame extends JFrame {
                     if (e.getKeyCode() == KeyEvent.VK_R) {
                         fw();
                     }
-                }else{
+                } else {
                     if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                         if (rockman.getJumpping() && !rockman.getDead()) {
-                            rockman.setIcon(new ImageIcon("Action/jump-r.png"));
+                            rockman.setIcon(new ImageIcon(this.getClass().getResource("Action/jump-r.png")));
                         }
-                        rockman.run_start();
                         rockman.setDirection_Right(true);
+                        rockman.run_start();
                     }
                     if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                         if (rockman.getJumpping() && !rockman.getDead()) {
-                            rockman.setIcon(new ImageIcon("Action/jump-l.png"));
+                            rockman.setIcon(new ImageIcon(this.getClass().getResource("Action/jump-l.png")));
                         }
-                        rockman.run_start();
                         rockman.setDirection_Right(false);
+                        rockman.run_start();
                     }
                     if (e.getKeyCode() == key_jump && !rockman.getJumpping()) {
                         rockman.setJumpping(true);
                         if (!rockman.getDead()) {
                             if (rockman.getDirection_Right()) {
-                                rockman.setIcon(new ImageIcon("Action/jump-r.png"));
+                                rockman.setIcon(new ImageIcon(this.getClass().getResource("Action/jump-r.png")));
                             } else {
-                                rockman.setIcon(new ImageIcon("Action/jump-l.png"));
+                                rockman.setIcon(new ImageIcon(this.getClass().getResource("Action/jump-l.png")));
                             }
                         }
                     }
@@ -214,8 +215,17 @@ class MainFrame extends JFrame {
             }
             @Override
             public void keyReleased(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    rockman.run_stop();
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                    if(rockman.getDirection_Right()) {
+                        rockman.run_stop();
+                    }
+                    rockman.setRunstep(0);
+                }
+                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+                    if(!rockman.getDirection_Right()) {
+                        rockman.run_stop();
+                    }
+                    rockman.setRunstep(0);
                 }
             }
         });
@@ -261,7 +271,7 @@ class MainFrame extends JFrame {
                     for (int i = 0; i < 6; i++) {
                         if ((coin[i].getObjx() + (coin[i].getObjx() + coin[i].getIcon().getIconWidth())) / 2 >= rockman.getX() && (coin[i].getObjx() + (coin[i].getObjx() + coin[i].getIcon().getIconWidth())) / 2 <= rockman.getX() + rockman.getIcon().getIconWidth() && (coin[i].getObjy() + coin[i].getObjy() + coin[i].getIcon().getIconHeight()) / 2 >= rockman.getY() && (coin[i].getObjy() + coin[i].getObjy() + coin[i].getIcon().getIconHeight()) / 2 <= rockman.getY() + rockman.getIcon().getIconHeight()) {
                             coin[i].setObjx(-150);
-                            score += 100;
+                            score += 200;
                             jlb_score.setText("SCORE:" + score);
                             coinsound.play();
                             coin[i].setVisible(false);
@@ -269,12 +279,11 @@ class MainFrame extends JFrame {
                     }
                     for (int i = 0; i < 3; i++) {
                         if (!rockman.getShooting()) {
-                            if (rockman.getX() + rockman.getIcon().getIconWidth() >= metall[i].getX() + 30 && rockman.getX() + rockman.getIcon().getIconWidth() <= metall[i].getX() + metall[i].getIcon().getIconWidth() - 30 || (rockman.getX() >= metall[i].getX() - 30 && rockman.getX() <= metall[i].getX() + metall[i].getIcon().getIconWidth() - 30)||(rockman.getX()+rockman.getX() + rockman.getIcon().getIconWidth())/2>=metall[i].getX() + 30&&(rockman.getX()+rockman.getX() + rockman.getIcon().getIconWidth())/2<=metall[i].getX() + metall[i].getIcon().getIconWidth() - 30) {
+                            if (rockman.getX() + rockman.getIcon().getIconWidth() >= metall[i].getX() + 30 && rockman.getX() + rockman.getIcon().getIconWidth() <= metall[i].getX() + metall[i].getIcon().getIconWidth() - 30 || (rockman.getX() >= metall[i].getX() - 30 && rockman.getX() <= metall[i].getX() + metall[i].getIcon().getIconWidth() - 30) || (rockman.getX() + rockman.getX() + rockman.getIcon().getIconWidth()) / 2 >= metall[i].getX() + 30 && (rockman.getX() + rockman.getX() + rockman.getIcon().getIconWidth()) / 2 <= metall[i].getX() + metall[i].getIcon().getIconWidth() - 30) {
                                 if (rockman.getY() + rockman.getIcon().getIconHeight() >= metall[i].getY() + 10 && rockman.getY() + rockman.getIcon().getIconHeight() <= metall[i].getY() + metall[i].getIcon().getIconHeight() + 10) {
                                     rockman.setDead(true);
                                     rockman.setV(30);
                                     dead_sound.play();
-                                    System.out.println("dead");
                                 }
                             }
                         } else {
@@ -283,16 +292,14 @@ class MainFrame extends JFrame {
                                     rockman.setDead(true);
                                     rockman.setV(30);
                                     dead_sound.play();
-                                    System.out.println("dead");
                                 }
                             }
                         }
-                        if (rockman.getX() + rockman.getIcon().getIconWidth() >= petitGoblin[i].getX()+5  && rockman.getX() + rockman.getIcon().getIconWidth() <= petitGoblin[i].getX() + petitGoblin[i].getIcon().getIconWidth()-5 || (rockman.getX() >= petitGoblin[i].getX() - 10 && rockman.getX() <= petitGoblin[i].getX() + petitGoblin[i].getIcon().getIconWidth() - 10)||((rockman.getX()+rockman.getX() + rockman.getIcon().getIconWidth())/2>= petitGoblin[i].getX()+5 && (rockman.getX()+rockman.getX() + rockman.getIcon().getIconWidth())/2<=petitGoblin[i].getX()+petitGoblin[i].getIcon().getIconWidth())) {
-                            if (rockman.getY() + rockman.getIcon().getIconHeight() >= petitGoblin[i].getY()+5 && rockman.getY() + rockman.getIcon().getIconHeight() <= petitGoblin[i].getY() + petitGoblin[i].getIcon().getIconHeight()-5 ||(rockman.getY()<=petitGoblin[i].getY()+petitGoblin[i].getIcon().getIconHeight()&&rockman.getY()>=petitGoblin[i].getY())) {
+                        if (rockman.getX() + rockman.getIcon().getIconWidth() >= petitGoblin[i].getX() + 5 && rockman.getX() + rockman.getIcon().getIconWidth() <= petitGoblin[i].getX() + petitGoblin[i].getIcon().getIconWidth() - 5 || (rockman.getX() >= petitGoblin[i].getX() - 10 && rockman.getX() <= petitGoblin[i].getX() + petitGoblin[i].getIcon().getIconWidth() - 10) || ((rockman.getX() + rockman.getX() + rockman.getIcon().getIconWidth()) / 2 >= petitGoblin[i].getX() + 5 && (rockman.getX() + rockman.getX() + rockman.getIcon().getIconWidth()) / 2 <= petitGoblin[i].getX() + petitGoblin[i].getIcon().getIconWidth())) {
+                            if (rockman.getY() + rockman.getIcon().getIconHeight() >= petitGoblin[i].getY() + 5 && rockman.getY() + rockman.getIcon().getIconHeight() <= petitGoblin[i].getY() + petitGoblin[i].getIcon().getIconHeight() - 5 || (rockman.getY() <= petitGoblin[i].getY() + petitGoblin[i].getIcon().getIconHeight() && rockman.getY() >= petitGoblin[i].getY())) {
                                 rockman.setDead(true);
                                 rockman.setV(30);
                                 dead_sound.play();
-                                System.out.println("dead");
                             }
                         }
                     }
@@ -311,7 +318,6 @@ class MainFrame extends JFrame {
                             } else {
                                 enemy_defencesound.play();
                             }
-                            System.out.println("get");
                         }
                         if ((bean[i].getObjx() + (bean[i].getObjx() + bean[i].getIcon().getIconWidth())) / 2 >= petitGoblin[j].getX() && (bean[i].getObjx() + (bean[i].getObjx() + bean[i].getIcon().getIconWidth())) / 2 <= petitGoblin[j].getX() + petitGoblin[j].getIcon().getIconWidth() && (bean[i].getObjy() + (bean[i].getObjy() + bean[i].getIcon().getIconHeight())) / 2 + 5 >= petitGoblin[j].getY() && (bean[i].getObjy() + (bean[i].getObjy() + bean[i].getIcon().getIconHeight())) / 2 <= petitGoblin[j].getY() + petitGoblin[j].getIcon().getIconHeight()) {
                             bean[i].setHit(true);
@@ -321,17 +327,16 @@ class MainFrame extends JFrame {
                             jlb_score.setText("SCORE:" + score);
                             enemy_deadsound.play();
                         }
-                            System.out.println("get");
-                        }
                     }
+                }
                 if (rockman.getDead()) {
-                    if(score>thebestscore) {
+                    if (score > thebestscore) {
                         thebestscore = score;
                         jlb_thebestscore.setText("THE BEST SCORE:" + thebestscore);
                     }
                     jlb_score.setVisible(false);
                     jlb_thebestscore.setVisible(true);
-                    jlb_thebestscore.setBounds(350,200,800,100);
+                    jlb_thebestscore.setBounds(350, 200, 800, 100);
                     jlb_retry.setVisible(true);
                     jlb_retry.setBounds(600, 350, 100, 50);
                 }
@@ -375,16 +380,16 @@ class MainFrame extends JFrame {
                 timer[2].setDelay(1000 + random.nextInt(8) * 100);
             }
         });
-        timer[3]=new Timer(1000, new ActionListener() {
+        timer[3] = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (random.nextBoolean()) {
                     for (int i = 0; i < 3; i++) {
                         if (!petitGoblin[i].getShow()) {
-                            petitGoblin[i].setV(random.nextInt(5)+3);
+                            petitGoblin[i].setV(random.nextInt(5) + 3);
                             petitGoblin[i].setObjx(1280);
                             petitGoblin[i].setShow(true);
-                            petitGoblin[i].setObjy(200+random.nextInt(300));
+                            petitGoblin[i].setObjy(200 + random.nextInt(300));
                             break;
                         }
                     }
@@ -392,44 +397,13 @@ class MainFrame extends JFrame {
                 timer[3].setDelay(500 + random.nextInt(8) * 100);
             }
         });
-        /////////////////////////closeeye//////////////////////////////
-//        timer[0] = new Timer(2000, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                if (rockman.getIcon() == new ImageIcon("Action/default-r.png") ||rockman.getIcon() == new ImageIcon("Action/default-l.png") ) {
-//                    if (direction_Right) {
-//                        icon = new ImageIcon("Action/closeeye-r.png");
-//                    } else {
-//                        icon = new ImageIcon("Action/closeeye-l.png");
-//                    }
-//                    rockman.setIcon(icon);
-//                    timer[1].start();
-//                }
-//            }
-//        });
-        ////////////////////////Default//////////////////////////////
-//        timer[1] = new Timer(100, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                if (rockman.getIcon() == new ImageIcon("Action/default-r.png") ||rockman.getIcon() == new ImageIcon("Action/default-l.png")) {
-//                    if (direction_Right) {
-//                        icon = new ImageIcon("Action/default-r.png");
-//                    } else {
-//                        icon = new ImageIcon("Action/default-l.png");
-//                    }
-//                }
-//                rockman.setIcon(icon);
-//                timer[1].stop();
-//
-//        }
-//        });
     }
-    public void fw(){
-        score=0;
+
+    public void fw() {
+        score = 0;
         jlb_score.setText("SCORE:" + score);
         rockman.setDead(false);
         rockman.setJumpping(false);
-        System.out.println("click");
         jlb_retry.setVisible(false);
         jlb_thebestscore.setVisible(false);
         jlb_score.setVisible(true);
@@ -438,11 +412,11 @@ class MainFrame extends JFrame {
         rockman.setObjy(720 - 203);
         rockman.setLocation(0, 720 - 203);
         try {
-            FileWriter fw =new FileWriter("option.ini");
-            fw.write("BGM="+ FrameStart.getbgm());
-            fw.write("\nJUMP="+(char)FrameStart.getKey_jump());
-            fw.write("\nSHOOT="+(char)FrameStart.getKey_shoot());
-            fw.write("\nTHE_BEST_SCORE="+thebestscore);
+            FileWriter fw = new FileWriter("option.conf");
+            fw.write("BGM=" + FrameStart.getbgm());
+            fw.write("\nJUMP=" + (char) FrameStart.getKey_jump());
+            fw.write("\nSHOOT=" + (char) FrameStart.getKey_shoot());
+            fw.write("\nTHE_BEST_SCORE=" + thebestscore);
             fw.close();
         } catch (IOException e1) {
             e1.printStackTrace();

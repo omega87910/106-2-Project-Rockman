@@ -1,24 +1,19 @@
 import javax.swing.*;
 
 public class PetitGoblin extends JLabel implements Runnable {
-    private int objx, objy=-100,v=5;
+    private int objx, objy = -100, v = 5;
     private Boolean show = false;
+
     public void setObjx(int objx1) {
         this.objx = objx1;
     }
+
     public void setV(int v) {
         this.v = v;
-    }
-    public int getObjx() {
-        return objx;
     }
 
     public void setObjy(int objy1) {
         this.objy = objy1;
-    }
-
-    public int getObjy() {
-        return objy;
     }
 
     public void setShow(Boolean show) {
@@ -30,7 +25,7 @@ public class PetitGoblin extends JLabel implements Runnable {
     }
 
     PetitGoblin() {
-        PetitGoblin.this.setIcon(new ImageIcon("Action/petitgoblin_o.png"));
+        PetitGoblin.this.setIcon(new ImageIcon(this.getClass().getResource("Action/petitgoblin_o.png")));
     }
 
     @Override
