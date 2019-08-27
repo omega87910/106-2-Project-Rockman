@@ -1,5 +1,6 @@
 # 106-2-Project-Rockman
 This is my first project -- Simple 2D ACT Rockman Game. <br>
+You can jump , shoot , move. <br>
 Howerver it is bad efficacy.<br>
 # Required
 Required OS: windows <br>
