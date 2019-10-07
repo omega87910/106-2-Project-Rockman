@@ -8,7 +8,9 @@ Try to get higher score ! <br>
 Required OS: windows <br>
 Required JDK version:10 <br>
 ## Play game
+<code> git clone https://github.com/omega87910/106-2-Project-Rockman.git</code> 
 Double-click "start.bat" in "Rockman" directory.
+### Please use git to clone the repository,Don't download respository ,it will lost some large files
 
 
 僅供學期成果報告<br>
