@@ -9,8 +9,6 @@ Required OS: windows <br>
 Required JDK version:10 <br>
 ## Play game
 Download from here https://drive.google.com/open?id=1DF5diVN2WzOHVL8H-cq6bzO0wp0tXmAD <br>
-or <br>
-<code> git clone https://github.com/omega87910/106-2-Project-Rockman.git</code><br> 
 then Double-click "start.bat" in "Rockman" directory.
 ### Don't download respository ,it will lost some large files
 
