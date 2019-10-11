@@ -1,5 +1,5 @@
 # 106-2-Project-Rockman
-<img src="https://github.com/omega87910/MY_GITHUB_IMAGES/blob/master/106-2-Project-Rockman/Rockman.png" width="50%" height="50%"></img><br>
+<img src="https://github.com/omega87910/MY_GITHUB_IMAGES/blob/master/106-2-Project-Rockman/Rockman.png" width="70%" height="70%"></img><br>
 ## Introduction
 This is my first project -- Simple 2D ACT Rockman Game. <br>
 You can jump , shoot , move to kill the monsters or get coin.<br>
