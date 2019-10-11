@@ -11,7 +11,6 @@ Required JDK version:10 <br>
 ## Play game
 Download from here https://drive.google.com/open?id=1DF5diVN2WzOHVL8H-cq6bzO0wp0tXmAD <br>
 then Double-click "start.bat" in "Rockman" directory.
-### Don't download respository ,it will lost some large files
 
 
 僅供學期成果報告<br>
