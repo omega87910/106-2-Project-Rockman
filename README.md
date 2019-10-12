@@ -15,3 +15,4 @@ then Double-click "start.bat" in "Rockman" directory.
 
 僅供學期成果報告<br>
 非商業使用<br>
+<img src="https://github.com/omega87910/MY_GITHUB_IMAGES/blob/master/106-2-Project-Rockman/Show.jpg" width="70%" height="70%"></img><br>
