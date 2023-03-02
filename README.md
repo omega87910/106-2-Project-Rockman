@@ -9,8 +9,7 @@ Try to get higher score ! <br>
 Required OS: windows <br>
 Required JDK version:10 <br>
 ## Play game
-Download from here https://drive.google.com/open?id=1DF5diVN2WzOHVL8H-cq6bzO0wp0tXmAD <br>
-then Double-click "start.bat" in "Rockman" directory.
+java -jar --module-path "./lib" --add-modules javafx.media "Rockman.jar"
 
 ## Contributors
 [![](https://github.com/omega87910.png?size=50)](https://github.com/omega87910)
