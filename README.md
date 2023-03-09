@@ -9,7 +9,7 @@ Try to get higher score ! <br>
 Required OS: windows <br>
 Required JDK version:10 <br>
 ## Play game
-java -jar --module-path "./lib" --add-modules javafx.media "Rockman.jar"
+<code> java -jar --module-path "./lib" --add-modules javafx.media "Rockman.jar" </code>
 
 ## Contributors
 [![](https://github.com/omega87910.png?size=50)](https://github.com/omega87910)
